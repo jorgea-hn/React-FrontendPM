@@ -1,10 +1,48 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import './index.css'
+import App from './App';
+import Home from './views/Home';
+import Error from './components/Error'
+import Teams from './components/Teams';
+import Tablero from './components/Tablero';
+import Card from './components/Card';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+  },
+  {
+    path: "/home",
+    element: <Home/>,
+  },
+  {
+    path: "/error",
+    element: <Error/>,
+  },
+  {
+    path: "/teams",
+    element: <Teams/>,
+  },
+  {
+    path: "/tablero",
+    element: <Tablero/>,
+  },
+  {
+    path: "/card",
+    element: <Card/>,
+  },
+  
+]);
+
+ReactDOM.createRoot(document.getElementById('container')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
