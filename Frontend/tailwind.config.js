@@ -7,8 +7,22 @@ export default {
     "./src/**/*.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        principal: '#5847AD',
+        secundario1: '#0C4B8E',
+        secundario2: '#535E92',
+        secundario3: '#5E6AA4',
+        acentuacion : "#189BFA",
+      },
+      fontSize: {
+        'sm': '12px',
+        'md': '14px',
+        'lg': '16px',
+        'xl': '18px',
+      },
+    },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-font-inter')],
 }
 

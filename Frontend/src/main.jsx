@@ -11,6 +11,8 @@ import Error from './components/Error'
 import Teams from './components/Teams';
 import Tablero from './components/Tablero';
 import Card from './components/Card';
+import Sidebar from './components/Sidebar';
+import Register from './components/Register';
 
 
 const router = createBrowserRouter([
@@ -23,11 +25,7 @@ const router = createBrowserRouter([
     element: <Home/>,
   },
   {
-    path: "/error",
-    element: <Error/>,
-  },
-  {
-    path: "/teams",
+    path:"/teams",
     element: <Teams/>,
   },
   {
@@ -38,10 +36,22 @@ const router = createBrowserRouter([
     path: "/card",
     element: <Card/>,
   },
+  {
+    path: "/sidebar",
+    element: <Sidebar/>,
+  },
+  {
+    path: "/register",
+    element: <Register/>, 
+  },
+  {
+    path: "*",
+    element: <Error/>, 
+  },
   
 ]);
 
-ReactDOM.createRoot(document.getElementById('container')).render(
+ReactDOM.createRoot(document.getElementById("container")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>,
