@@ -16,6 +16,7 @@ export default {
         acentuacion : "#189BFA",
       },
       fontSize: {
+        'xxs':'10px',
         'sm': '12px',
         'md': '14px',
         'lg': '16px',

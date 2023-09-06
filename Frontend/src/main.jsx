@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import './index.css'
 import App from './App';
+import Login from './components/Login'
 import Home from './views/Home';
 import Error from './components/Error'
 import Teams from './components/Teams';
@@ -13,13 +14,25 @@ import Tablero from './components/Tablero';
 import Card from './components/Card';
 import Sidebar from './components/Sidebar';
 import Register from './components/Register';
+import ProjectNew from './views/ProjectNew';
+
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    Component:Login,
   },
+  {
+    path: "/register",
+    Component:Register, 
+  },
+  {
+    path: "/projectnew",
+    Component:ProjectNew,
+  },
+
+
   {
     path: "/home",
     element: <Home/>,
@@ -40,10 +53,7 @@ const router = createBrowserRouter([
     path: "/sidebar",
     element: <Sidebar/>,
   },
-  {
-    path: "/register",
-    element: <Register/>, 
-  },
+  
   {
     path: "*",
     element: <Error/>, 
@@ -51,7 +61,7 @@ const router = createBrowserRouter([
   
 ]);
 
-ReactDOM.createRoot(document.getElementById("container")).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>,

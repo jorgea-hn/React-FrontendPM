@@ -1,7 +1,8 @@
-import Navbar from "../components/Navbar";
+
 import Sidebar from "../components/Sidebar";
 import Card from "../components/Card";
 import { useNavigate } from 'react-router-dom';
+import Tableros from "../components/Tableros";
 
 
 
@@ -24,7 +25,8 @@ function Home() {
     <div className="flex">
       <Sidebar />
       <div className="flex-1 overflow-auto">
-          <h1 className="text-xl font-bold text-primario text-center pt-10">TUS ESPACIOS DE TRABAJO</h1>
+          <h1 className="text-xl font-bold text-primario text-center pt-10 mb-6">TUS ESPACIOS DE TRABAJO</h1>
+          <Tableros/>
       </div>
     </div>
   );

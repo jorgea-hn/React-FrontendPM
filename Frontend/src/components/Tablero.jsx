@@ -3,7 +3,7 @@
 function Tablero(){
     return(
         <>
-        <div className=" bg-red-100"  style={{ width: 300}}>
+        <div className=" bg-red-100 "  style={{ width: 300}}>
             
         </div>
         </>

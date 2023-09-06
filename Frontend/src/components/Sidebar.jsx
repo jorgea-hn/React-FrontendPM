@@ -4,13 +4,13 @@ import Modal from './Modal';
 import React, { useState } from 'react';
 
 import icono from "../assets/Logo.png"
-function Sidebar() {
+function Sidebar({username}) {
     const navigate = useNavigate();
 
     const [isOpen, setIsOpen] = useState(false);
 
     const handleToggleModal = () => {
-      setIsOpen(!isOpen);
+        setIsOpen(!isOpen);
     };
 
     const handleLogout = () => {
@@ -69,18 +69,41 @@ function Sidebar() {
                                 <i class="fas fa-chevron-down text-xs"></i>
                             </div>
                         </li>
+
                         <li class="opcion-con-desplegable">
-                            <div class="flex items-center justify-between p-2 hover:bg-gray-700 " onClick={handleLogout}>
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                 <div class="flex items-center">
                                     <i class="fas fa-file-alt mr-2"></i>
-                                    <span class="text-md font-regular" >Cerrar Sesion</span>
+                                    <span class="text-md font-regular" >Bandeja de entrada</span>
                                 </div>
                                 <i class="fas fa-chevron-down text-xs"></i>
                             </div>
                         </li>
+
+                        <li class="opcion-con-desplegable">
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                                <div class="flex items-center">
+                                    <span class="text-md font-regular">{username}</span>
+                                </div>
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </li>
+
                     </ul>
+
                 </nav>
+
             </aside>
+
+            <div class="fixed bottom-0 left-0 bg-principal text-white w-64 p-4">
+                <div class="opcion-con-desplegable flex items-center justify-between p-2 hover:bg-gray-700 " onClick={handleLogout}>
+                    <div class="flex items-center">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span class="text-md font-regular">Cerrar Sesión</span>
+                    </div>
+                </div>
+            </div>
+
         </>
     )
 }

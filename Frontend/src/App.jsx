@@ -1,13 +1,8 @@
 import './App.css'
-import Login from './components/Login'
-function App() {
-  
 
+function App({children}) {
   return (
-    <div className="bg-principal">
-      
-      <Login />
-    </div>
+      <div>{children}</div>
   )
 }
 
