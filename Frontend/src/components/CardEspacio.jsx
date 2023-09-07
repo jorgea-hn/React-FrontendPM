@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-function CardTablero({ title = "¿Desea crear un tablero?" }) {
+function CardEspacio({ title = "¿Desea crear un tablero?" }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -16,4 +16,4 @@ function CardTablero({ title = "¿Desea crear un tablero?" }) {
     );
 }
 
-export default CardTablero;
+export default CardEspacio;

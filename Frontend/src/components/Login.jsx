@@ -12,33 +12,30 @@ function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-
-    const [loginExitoso, setLoginExitoso] = useState(false);
-
+  
     const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await authService.login(username, password);
-            if (response.access) {
-
-                localStorage.setItem('token', response.access);
-                console.log('Inicio de sesión exitoso');
-                navigate('/home');
-            } else {
-                console.error('Inicio de sesión fallido: ', response);
-                setError('Credenciales incorrectas');
-            }
-        } catch (error) {
-            console.error('Error al iniciar sesión:', error.message);
-            setError('Error al iniciar sesión');
+      e.preventDefault();
+  
+      try {
+        const response = await authService.login(username, password);
+        if (response.access) {
+          localStorage.setItem('token', response.access);
+          console.log('Inicio de sesión exitoso');
+          navigate('/home');
+        } else {
+          console.error('Inicio de sesión fallido: ', response);
+          setError('Credenciales incorrectas');
         }
+      } catch (error) {
+        console.error('Error al iniciar sesión:', error.message);
+        setError('Error al iniciar sesión');
+      }
     };
-
-
+  
     const irRegistro = () => {
-        navigate('/register');
+      navigate('/register');
     };
+  
 
     return (
         <>

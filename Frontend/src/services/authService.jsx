@@ -1,52 +1,54 @@
-const API_BASE_URL = 'http://eduardovega04.pythonanywhere.com';
-// http://eduardovega04.pythonanywhere.com/api/token/
+import axios from 'axios';
 
-// Función para iniciar sesión y obtener un token JWT
+const API_BASE_URL = 'http://eduardovega04.pythonanywhere.com';
+const axiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
 async function login(username, password) {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/token/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
+    const response = await axiosInstance.post('/api/token/', {
+      username,
+      password,
     });
 
-    if (!response.ok) {
+    if (!response.data.access) {
       throw new Error('Credenciales incorrectas');
     }
 
-    const data = await response.json();
-    return data;
+    // Almacenar el token de acceso y el token de actualización en localStorage
+    localStorage.setItem('accessToken', response.data.access);
+    localStorage.setItem('refreshToken', response.data.refresh);
+    localStorage.setItem('username', username);
+
+    return response.data;
   } catch (error) {
     throw error;
   }
 }
 
-
 function logout() {
-  localStorage.removeItem('token');
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('refreshToken');
+  localStorage.removeItem('username');
 }
-
-
 
 async function registerUser(username, email, password) {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/registro/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, email, password }), 
+    const response = await axiosInstance.post('/api/registro/', {
+      username,
+      email,
+      password,
     });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error_message);
+    if (!response.data.success) {
+      throw new Error(response.data.error_message);
     }
 
-    const data = await response.json();
-    return { success: true, data };
+    return { success: true, data: response.data };
   } catch (error) {
     throw error;
   }
@@ -59,3 +61,4 @@ const authService = {
 };
 
 export default authService;
+

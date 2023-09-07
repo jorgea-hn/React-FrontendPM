@@ -4,6 +4,7 @@ import Modal from './Modal';
 import React, { useState } from 'react';
 
 import icono from "../assets/Logo.png"
+import iconoUser from "../assets/user.svg"
 function Sidebar({username}) {
     const navigate = useNavigate();
 
@@ -83,6 +84,8 @@ function Sidebar({username}) {
                         <li class="opcion-con-desplegable">
                             <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                 <div class="flex items-center">
+                                    <i class="fas fa-file-alt mr-2"></i>
+                                    <i class="fas fa-file-alt mr-2"><img class="w-6" src={iconoUser} alt="" /></i>
                                     <span class="text-md font-regular">{username}</span>
                                 </div>
                                 <i class="fas fa-chevron-down text-xs"></i>
