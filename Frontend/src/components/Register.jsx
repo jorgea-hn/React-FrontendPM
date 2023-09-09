@@ -11,26 +11,11 @@ function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
-
 
     const [registroExitoso, setRegistroExitoso] = useState(false);
-    const [showNotification, setShowNotification] = useState(false);
 
-    useEffect(() => {
-        if (registroExitoso) {
-            setShowNotification(true);
+    const navigate = useNavigate();
 
-
-            const timer = setTimeout(() => {
-                setShowNotification(false);
-                navigate('/');
-            }, 5000);
-
-
-            return () => clearTimeout(timer);
-        }
-    }, [registroExitoso, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,20 +26,15 @@ function Register() {
             if (response.success) {
                 console.log('Registro exitoso');
                 navigate('/');
-                setRegistroExitoso(true);
-                setError(null);
             } else {
                 console.error('Error en el registro:', response.error);
                 setError(response.error);
-                setRegistroExitoso(false);
             }
         } catch (error) {
             console.error('Error al registrar:', error.message);
             setError('Error al registrar');
-            setRegistroExitoso(false);
         }
     };
-
 
     const irLogin = () => {
         navigate('/');
@@ -112,7 +92,7 @@ function Register() {
                                 <Notification type="success" message="Usuario creado con éxito" />
                             )}
                             {error && <Notification type="error" message={error} />}
-                            
+
 
 
                             <div>

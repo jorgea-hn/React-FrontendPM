@@ -8,17 +8,11 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Verificar si el usuario tiene un token en localStorage
     const token = localStorage.getItem('accessToken');
     if (!token) {
-      // Si no hay token, redirigir al formulario de inicio de sesión
       navigate('/');
-      return;
     }
-
     const storedUsername = localStorage.getItem('username');
-
-    // Establecer el nombre de usuario en el estado del componente
     setUsername(storedUsername);
   }, [navigate]);
 

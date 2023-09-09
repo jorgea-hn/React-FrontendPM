@@ -1,19 +1,10 @@
-import axios from 'axios';
-
-const API_BASE_URL = 'http://eduardovega04.pythonanywhere.com';
-
-const axiosInstance = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+import httpInstance from "./InstanceHTTP"
 
 async function getEspacios(accessToken) {
   try {
-    const response = await axiosInstance.get('/api/espacio/', {
+    const response = await httpInstance.get('/api/espacio/', {
       headers: {
-        Authorization: `Bearer ${accessToken}`, // Agrega el token de acceso en las cabeceras
+        Authorization: `Bearer ${accessToken}`,
       },
     });
     return response.data;
@@ -22,17 +13,17 @@ async function getEspacios(accessToken) {
   }
 }
 
-
-
 async function createEspacio(nombreEspacio, accessToken) {
   try {
-    const response = await axiosInstance.post('/api/espacio/', {
-      nombre_espacio: nombreEspacio,
-    }, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`, // Agrega el token de acceso en el encabezado
-      },
-    });
+    const response = await httpInstance.post(
+      '/api/espacio/',
+      { nombre_espacio: nombreEspacio },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
 
     if (response.status === 201) {
       return response.data;
