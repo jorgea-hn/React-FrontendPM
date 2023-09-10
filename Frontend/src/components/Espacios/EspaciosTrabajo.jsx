@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import espaciosService from "../services/espaciosService";
+import espaciosService from "../../services/espaciosService";
 
-import CardEspacio from "../components/CardEspacio"
-import iconoSincronziar from "../assets/sincronizar.png"
+import CardEspacio from "../Espacios/CardEspacio"
+import iconoSincronziar from "../../assets/sincronizar.png"
 
 
 function EspaciosTrabajo() {
@@ -12,15 +12,10 @@ function EspaciosTrabajo() {
   useEffect(() => {
     async function fetchEspacios() {
       try {
-        // Obtén el token de acceso desde localStorage
         const accessToken = localStorage.getItem('accessToken');
-
-        // Verifica si el token de acceso está definido
         if (!accessToken) {
           throw new Error('Token de acceso no encontrado en localStorage');
         }
-
-        // Llama al servicio para obtener los espacios y pasa el token de acceso
         const espaciosData = await espaciosService.getEspacios(accessToken);
 
         setEspacios(espaciosData);
@@ -33,14 +28,6 @@ function EspaciosTrabajo() {
   }, []);
 
 
-
-  useEffect(() => {
-    // Imprime los detalles completos de cada espacio en la consola
-    espacios.forEach((espacio) => {
-        console.log("Detalles del espacio:", espacio);
-    });
-}, [espacios]);
-
   return (
     <>
 
@@ -49,7 +36,7 @@ function EspaciosTrabajo() {
         <h2 className="text-left">Espacios de trabajo de usuarios</h2>
       </div>
 
-      <div className="flex flex-row h-32 overflow-x-auto my-4 px-8 py-2 space-x-6">
+      <div className="grid grid-cols-5 gap-4 my-4 px-8 py-2">
         <CardEspacio />
         {espacios.map((espacio) => (
           <CardEspacio key={espacio.id} title={espacio.nombre_espacio} />

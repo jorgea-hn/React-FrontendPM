@@ -5,16 +5,20 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
-import App from './App';
-import Login from './components/Login'
+import Login from './views/Login'
+import Register from './views/Register';
 import Home from './views/Home';
-import Error from './components/Error'
+
+import Error from './views/Error'
 import Teams from './components/Teams';
 import Tablero from './components/Tablero';
 import Card from './components/Card';
 import Sidebar from './components/Sidebar';
-import Register from './components/Register';
-import ProjectNew from './views/ProjectNew';
+
+import CreateNewProject from './views/CreateNewProject';
+import NewProject from './views/NewProject';
+import Navbar from './components/Navbar';
+import Projects from './views/Projects';
 
 
 
@@ -28,36 +32,51 @@ const router = createBrowserRouter([
     Component:Register, 
   },
   {
-    path: "/projectnew",
-    Component:ProjectNew,
-  },
-
-
-  {
     path: "/home",
-    element: <Home/>,
+    Component:Home,
   },
   {
-    path:"/teams",
-    element: <Teams/>,
+    path: "/create",
+    Component:CreateNewProject,
   },
   {
-    path: "/tablero",
-    element: <Tablero/>,
+    path: "/new",
+    Component:NewProject,
   },
+
   {
-    path: "/card",
-    element: <Card/>,
+    path: "/projects",
+    Component:Projects,
   },
-  {
-    path: "/sidebar",
-    element: <Sidebar/>,
-  },
-  
   {
     path: "*",
-    element: <Error/>, 
+    Component: Error, 
   },
+
+
+  // {
+  //   path: "/navbar",
+  //   element: <Navbar/>,
+  // },
+
+  // {
+  //   path:"/teams",
+  //   element: <Teams/>,
+  // },
+  // {
+  //   path: "/tablero",
+  //   element: <Tablero/>,
+  // },
+  // {
+  //   path: "/card",
+  //   element: <Card/>,
+  // },
+  // {
+  //   path: "/sidebar",
+  //   element: <Sidebar/>,
+  // },
+  
+  
   
 ]);
 

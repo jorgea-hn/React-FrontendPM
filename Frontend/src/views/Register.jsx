@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authService from "../services/authService";
 
-import Notification from './Notification';
+import Notification from '../components/Notification';
 
 function Register() {
 

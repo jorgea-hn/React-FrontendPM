@@ -4,13 +4,17 @@ import iconoAgregar from "../assets/mas.svg"
 import iconoPM from "../assets/trello.svg"
 import flecha from "../assets/flechaAtras.png"
 
-function ProjectNew() {
+function CreateNewProject() {
 
     const navigate = useNavigate();
 
     const goBack = () => {
         navigate(-1);
     };
+
+    const handleCardClick = () => {
+        navigate('/new');
+      };
 
 
     return (
@@ -25,7 +29,7 @@ function ProjectNew() {
                 <p className=" mb-8">¿Como quieres empezar?</p>
 
                 <div className="flex justify-around space-x-4">
-                    <CardNewProject img={iconoAgregar} title="Tablero en blanco" subtitle="Empezar desde cero" borde="border-dashed" />
+                    <CardNewProject img={iconoAgregar} title="Tablero en blanco" subtitle="Empezar desde cero" borde="border-dashed" onClick={handleCardClick} />
                     <CardNewProject img={iconoPM} title="Usar una plantilla" subtitle="Desde plantilla" />
                 </div>
 
@@ -35,4 +39,4 @@ function ProjectNew() {
     )
 }
 
-export default ProjectNew
+export default CreateNewProject

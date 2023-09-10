@@ -1,7 +1,9 @@
-import Sidebar from "../components/Sidebar";
-import EspaciosTrabajo from "../components/EspaciosTrabajo";
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import Sidebar from "../components/Sidebar";
+import EspaciosTrabajo from "../components/Espacios/EspaciosTrabajo";
 
 function Home() {
   const [username, setUsername] = useState('');

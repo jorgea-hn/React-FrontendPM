@@ -5,7 +5,7 @@ import authService from "../services/authService";
 import { useNavigate } from 'react-router-dom';
 
 
-import Notification from './Notification';
+import Notification from '../components/Notification';
 
 function Login() {
     const [username, setUsername] = useState('');
