@@ -35,9 +35,65 @@ async function createEspacio(nombreEspacio, accessToken) {
   }
 }
 
+
+
+async function getEspacioDetallado(accessToken, espacioId) {
+  try {
+    const response = await httpInstance.get(`/api/espacio/${espacioId}/`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function editarEspacio(accessToken, espacioId, nuevoNombre) {
+  try {
+    const response = await httpInstance.put(`/api/espacio/${espacioId}/`, {
+      nombre_espacio: nuevoNombre,
+    }, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error('Error al editar el espacio');
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function eliminarEspacio(accessToken, espacioId) {
+  try {
+    const response = await httpInstance.delete(`/api/espacio/${espacioId}/`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (response.status === 204) {
+      return true; // Éxito en la eliminación
+    } else {
+      throw new Error('Error al eliminar el espacio');
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
 const espacioService = {
   getEspacios,
   createEspacio,
+  getEspacioDetallado,
+  editarEspacio,
+  eliminarEspacio,
 };
 
 export default espacioService;

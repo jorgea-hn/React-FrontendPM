@@ -1,3 +1,5 @@
+// funcionando correctamente
+
 import icono from "../assets/logoVertical.png"
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -62,8 +64,6 @@ function Register() {
                     </div>
 
                     <div class="sm:mx-auto sm:w-full sm:max-w-sm ">
-
-
 
                         <form class="space-y-4" action="#" method="POST" onSubmit={handleSubmit}>
                             <div>

@@ -8,37 +8,38 @@ import './index.css'
 import Login from './views/Login'
 import Register from './views/Register';
 import Home from './views/Home';
-
-import Error from './views/Error'
-import Teams from './components/Teams';
-import Tablero from './components/Tablero';
-import Card from './components/Card';
-import Sidebar from './components/Sidebar';
+import Error from './views/Error';
 
 import CreateNewProject from './views/CreateNewProject';
 import NewProject from './views/NewProject';
-import Navbar from './components/Navbar';
 import Projects from './views/Projects';
+import VistaTableros from './views/VistaTableros';
+import CardEspacio from './components/Espacios/CardEspacio';
+import EspaciosTrabajo from './components/Espacios/EspaciosTrabajo';
 
+
+import CardTablero from './components/Tablero/CardTablero';
+import EspaciosTableros from "./components/Tablero/EspaciosTableros"
+import Tablero from "./components/Tablero/Tablero"
+import CardNewProject from './components/CardNewProject';
+import Modal from './components/Modal';
+import Navbar from './components/Navbar';
 
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    Component:Login,
-  },
-  {
-    path: "/register",
-    Component:Register, 
+    path: "/create",
+    Component:CreateNewProject,
   },
   {
     path: "/home",
     Component:Home,
   },
   {
-    path: "/create",
-    Component:CreateNewProject,
+    path: "/",
+    Component:Login,
   },
+  
   {
     path: "/new",
     Component:NewProject,
@@ -49,34 +50,55 @@ const router = createBrowserRouter([
     Component:Projects,
   },
   {
-    path: "*",
-    Component: Error, 
+    path: "/register",
+    Component:Register, 
+  },
+  {
+    path: "/tableros",
+    Component: VistaTableros,
+  },
+  // espacios 
+  {
+    path: "/carde",
+    Component: CardEspacio,
+  },
+  {
+    path: "/espaciost",
+    Component: EspaciosTrabajo,
+  },
+  // tableros
+  {
+    path: "/cardt",
+    Component: CardTablero,
+  },
+  {
+    path: "/espaciosta",
+    Component: EspaciosTableros,
+  },
+  {
+    path: "/tablero",
+    Component: Tablero,
+  },
+
+  {
+    path: "/cardn",
+    Component: CardNewProject,
+  },
+  {
+    path: "/modal",
+    Component: Modal,
+  },
+
+  {
+    path: "/nav",
+    Component: Navbar,
   },
 
 
-  // {
-  //   path: "/navbar",
-  //   element: <Navbar/>,
-  // },
-
-  // {
-  //   path:"/teams",
-  //   element: <Teams/>,
-  // },
-  // {
-  //   path: "/tablero",
-  //   element: <Tablero/>,
-  // },
-  // {
-  //   path: "/card",
-  //   element: <Card/>,
-  // },
-  // {
-  //   path: "/sidebar",
-  //   element: <Sidebar/>,
-  // },
-  
-  
+  {
+    path: "*",
+    Component: Error, 
+  },
   
 ]);
 

@@ -1,10 +1,9 @@
+// funcionando correctamente
 import icono from "../assets/logoVertical.png"
 import React, { useState } from 'react';
 
 import authService from "../services/authService";
 import { useNavigate } from 'react-router-dom';
-
-
 import Notification from '../components/Notification';
 
 function Login() {
@@ -41,16 +40,10 @@ function Login() {
         <>
             <div class="h-screen w-screen bg-principal">
                 <div class="h-screen flex items-center justify-center">
-
-
                     <div class="w-64 h-64 bg-gradient-to-b rounded-full from-blue-500 to-black absolute z-0" style={{ left: 200, top: 15 }}>
                     </div>
-
-
                     <div class="w-44 h-44 bg-gradient-to-b from-blue-500 to-black absolute rounded-full z-0" style={{ right: 280, top: 400 }}>
                     </div>
-
-
                     <div class="z-10 flex rounded-xl border px-12  bg-black bg-opacity-10" style={{ height: 400, width: 700, backdropFilter: 'blur(20px)' }}>
 
                         <div class="flex min-h-full flex-col justify-center pr-6 py-4 lg:px-10" style={{ width: 350 }}>
@@ -94,11 +87,7 @@ function Login() {
                         <div class="mx-auto my-auto px-6" style={{ width: 200 }}>
                             <img src={icono} alt="icono" />
                         </div>
-
                     </div>
-
-
-
                 </div>
             </div>
 
