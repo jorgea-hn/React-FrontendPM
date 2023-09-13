@@ -50,6 +50,8 @@ async function getEspacioDetallado(accessToken, espacioId) {
   }
 }
 
+
+// Este se tendra para revision de si se llegase a poder o no
 async function editarEspacio(accessToken, espacioId, nuevoNombre) {
   try {
     const response = await httpInstance.put(`/api/espacio/${espacioId}/`, {
@@ -88,7 +90,7 @@ async function eliminarEspacio(accessToken, espacioId) {
   }
 }
 
-const espacioService = {
+const espaciosService = {
   getEspacios,
   createEspacio,
   getEspacioDetallado,
@@ -96,4 +98,4 @@ const espacioService = {
   eliminarEspacio,
 };
 
-export default espacioService;
+export default espaciosService;

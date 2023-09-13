@@ -38,7 +38,7 @@ function EspaciosTrabajo() {
       // Llama a la función eliminarEspacio del servicio
       await espaciosService.eliminarEspacio(accessToken, espacioId);
 
-
+      window.location.reload();
       await fetchEspacios();
     } catch (error) {
       console.error('Error al eliminar el espacio de trabajo:', error.message);

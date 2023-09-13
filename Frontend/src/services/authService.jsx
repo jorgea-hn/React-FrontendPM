@@ -1,3 +1,5 @@
+
+
 import httpInstance from "./InstanceHTTP"
 
 
@@ -8,10 +10,6 @@ async function registerUser(username, email, password) {
       email,
       password,
     });
-
-    console.log(username,email,password)
-    console.log(response)
-    console.log(response.data)
 
     if (response.data) {
       return { success: true, data: response.data };

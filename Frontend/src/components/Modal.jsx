@@ -2,6 +2,7 @@ import icono from "../assets/librito.png"
 import iconoCerrar from "../assets/cerrar.svg"
 import espaciosService from "../services/espaciosService";
 
+
 function Modal({ isOpen, handleCloseModal }) {
 
     const handleSubmit = async (e) => {
@@ -15,6 +16,7 @@ function Modal({ isOpen, handleCloseModal }) {
             await espaciosService.createEspacio(nombreEspacio, accessToken);
 
             handleCloseModal();
+            window.location.reload();
         } catch (error) {
             console.error('Error al crear el espacio:', error.message);
         }

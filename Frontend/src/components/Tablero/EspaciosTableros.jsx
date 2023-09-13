@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import tableroService from "../../services/tableroService";
 import CardTablero from "./CardTablero";
 
-function TablerosList() {
+function EspaciosTableros() {
   const [tableros, setTableros] = useState([]);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ function TablerosList() {
 
   return (
     <div className="grid grid-cols-5 gap-4 my-4 px-8 py-2">
+      <CardTablero/>
       {tableros.map((tablero) => (
         <CardTablero key={tablero.id} title={tablero.nombre_tablero} id={tablero.id} />
       ))}
@@ -34,4 +35,4 @@ function TablerosList() {
   );
 }
 
-export default TablerosList;
+export default EspaciosTableros;
