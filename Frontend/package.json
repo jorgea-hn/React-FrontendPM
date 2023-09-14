@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "private": true,
-  "homepage": "https://jorgea-hn.github.io/React-FrontendPM.github.io/",
+  "homepage": "https://jorgea-hn.github.io/React-FrontendPM/build",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
