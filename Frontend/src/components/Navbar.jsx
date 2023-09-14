@@ -10,7 +10,7 @@ function Navbar() {
                 <div class="relative flex h-16 items-center justify-between">
                     <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div class="flex flex-shrink-0 items-center">
-                            <h2 class=" rounded-md px-3 py-2 text-sm font-medium"> Nombre del proyecto</h2>
+                            <h2 class=" rounded-md px-3 py-2 text-sm font-medium"></h2>
                         </div>
 
 

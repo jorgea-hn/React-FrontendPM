@@ -21,6 +21,9 @@ function Sidebar({ username }) {
         navigate('/'); // Redirige al usuario a la página de inicio de sesión
     };
 
+    const mostrarBotonRegresar = location.pathname.startsWith('/espacios/') || location.pathname.startsWith('/tablero/');
+
+
     return (
         <>
             <aside class="bg-principal text-white w-64 min-h-screen p-4">
@@ -83,7 +86,7 @@ function Sidebar({ username }) {
                             </div>
                         </li>
 
-                        {location.pathname.startsWith('/tableros/') && (
+                        {mostrarBotonRegresar  && (
                             <li class="opcion-con-desplegable">
                                 <div
                                     class="flex items-center justify-between p-2 hover:bg-gray-700"

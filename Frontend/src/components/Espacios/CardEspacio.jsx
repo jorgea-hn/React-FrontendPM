@@ -11,7 +11,7 @@ function CardEspacio({ title, espacioId, onDelete }) {
   };
 
   const handleClick = () => {
-    navigate(`/tableros/${espacioId}`);
+    navigate(`/espacios/${espacioId}`);
   };
   
 

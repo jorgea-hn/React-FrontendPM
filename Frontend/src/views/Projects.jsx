@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , useParams} from 'react-router-dom';
 
 import Sidebar from "../components/Sidebar";
 import Navbar from '../components/Navbar';
@@ -44,7 +44,7 @@ function Projects() {
                 <Sidebar username={username} />
                 
                 <div className="flex-1 overflow-auto">
-                    <Navbar/>
+                    <Navbar />
                     {tableroInfo ? (
                         <Tablero tableroInfo={tableroInfo} />
                     ) : (

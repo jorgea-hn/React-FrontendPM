@@ -46,7 +46,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/projects",
+    path: "/tablero/:tableroId",
     Component:Projects,
   },
   {
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
     Component:Register, 
   },
   {
-    path: "/tableros/:espacioId",
+    path: "/espacios/:espacioId",
     Component: VistaTableros,
   },
   // espacios 
@@ -76,7 +76,7 @@ const router = createBrowserRouter([
     Component: EspaciosTableros,
   },
   {
-    path: "/tablero",
+    path: "/tab",
     Component: Tablero,
   },
 
