@@ -9,6 +9,8 @@ function EspaciosTrabajo() {
 
   const [espacios, setEspacios] = useState([]);
 
+  
+
   useEffect(() => {
     async function fetchEspacios() {
       try {
@@ -34,16 +36,17 @@ function EspaciosTrabajo() {
       if (!accessToken) {
         throw new Error('Token de acceso no encontrado en localStorage');
       }
-
+  
       // Llama a la función eliminarEspacio del servicio
       await espaciosService.eliminarEspacio(accessToken, espacioId);
-
-      window.location.reload();
-      await fetchEspacios();
+  
+      // Actualiza el estado local eliminando el espacio de trabajo de la lista espacios
+      setEspacios((prevEspacios) => prevEspacios.filter((espacio) => espacio.id !== espacioId));
     } catch (error) {
       console.error('Error al eliminar el espacio de trabajo:', error.message);
     }
   };
+  
 
 
   return (

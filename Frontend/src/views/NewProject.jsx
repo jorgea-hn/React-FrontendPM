@@ -1,11 +1,33 @@
-import { useNavigate } from 'react-router-dom';
-import flecha from "../assets/flechaAtras.png"
+import { useNavigate ,useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import flecha from "../assets/flechaAtras.png";
+import tableroService from '../services/tableroService';
+
 function NewProject() {
 
     const navigate = useNavigate();
+    const { espacioId } = useParams();
 
     const goBack = () => {
         navigate(-1);
+    };
+
+
+    const [nombreTablero, setNombreTablero] = useState('');
+
+    const handleNombreTableroChange = (e) => {
+        setNombreTablero(e.target.value);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); 
+
+        try {
+            const accessToken = localStorage.getItem('accessToken');
+            const response = await tableroService.crearTablero(accessToken, nombreTablero, espacioId);
+        } catch (error) {
+            console.error('Error al crear el tablero:', error);
+        }
     };
 
 
@@ -21,9 +43,9 @@ function NewProject() {
 
                     <div class="flex bg-white h-2/5 mt-12 w-2/3 justify-center">
 
-                        <form action="" class="w-screen p-2 ">
+                        <form onSubmit={handleSubmit} class="w-screen p-2 ">
                             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                                <h2 class="text-black text-center text-lg font-bold">Nuevo Proyecto</h2>
+                                <h2 class="text-black text-center text-lg font-bold">Nuevo Tablero</h2>
                             </div>
 
 
@@ -31,7 +53,16 @@ function NewProject() {
                                 <label for="username" class="text-black text-sm font-bold">Nombre de proyecto</label>
                                 <div class="">
                                     <div class="">
-                                        <input id="username" name="username" type="username" autocomplete="username" required class="block w-full rounded-md border-0 px-2 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-black bg-opacity-10" />
+                                        <input
+                                            id="nombreTablero"
+                                            name="nombreTablero"
+                                            type="text"
+                                            value={nombreTablero}
+                                            onChange={handleNombreTableroChange}
+                                            autoComplete="off"
+                                            required
+                                            class="block w-full rounded-md border-0 px-2 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-black bg-opacity-10"
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -64,12 +95,6 @@ function NewProject() {
                 <div className='bg-secundario1 w-3/5'>
                 </div>
             </div>
-
-
-
-
-
-
         </>
     )
 }

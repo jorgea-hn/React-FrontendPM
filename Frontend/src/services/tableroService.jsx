@@ -15,11 +15,14 @@ async function getTableros(accessToken) {
 }
 
 
-async function crearTablero(accessToken, nombreTablero, espacioId) {
+const crearTablero = async (accessToken, nombreTablero, espacioId) => {
   try {
     const response = await httpInstance.post(
       '/api/tablero/',
-      { nombre_tablero, espacio_id: espacioId },
+      {
+        nombre_tablero: nombreTablero,
+        espacio_id: espacioId,
+      },
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -28,14 +31,26 @@ async function crearTablero(accessToken, nombreTablero, espacioId) {
     );
 
     if (response.status === 201) {
+      // El tablero se creó exitosamente
       return response.data;
+    } else if (response.status === 404) {
+      // Espacio no encontrado
+      throw new Error('El espacio no existe.');
+    } else if (response.status === 403) {
+      // El usuario no tiene permiso para participar en el espacio
+      throw new Error('No tienes permiso para participar en este espacio.');
+    } else if (response.status === 400) {
+      // El cuerpo de la solicitud es erróneo
+      throw new Error('El cuerpo de la solicitud es incorrecto.');
     } else {
-      throw new Error('Error al crear el tablero');
+      // Otro tipo de error
+      throw new Error('Error al crear el tablero.');
     }
   } catch (error) {
     throw error;
   }
-}
+};
+
 
 async function getTableroDetallado(accessToken, tableroId) {
   try {

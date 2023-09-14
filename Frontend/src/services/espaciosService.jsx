@@ -2,7 +2,7 @@ import httpInstance from "./InstanceHTTP"
 
 async function getEspacios(accessToken) {
   try {
-    const response = await httpInstance.get('/api/espacio/', {
+    const response = await httpInstance.get(`/api/espacio/`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -44,6 +44,8 @@ async function getEspacioDetallado(accessToken, espacioId) {
         Authorization: `Bearer ${accessToken}`,
       },
     });
+    console.log(response.data)
+    console.log(response)
     return response.data;
   } catch (error) {
     throw error;

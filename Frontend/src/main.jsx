@@ -54,7 +54,7 @@ const router = createBrowserRouter([
     Component:Register, 
   },
   {
-    path: "/tableros",
+    path: "/tableros/:espacioId",
     Component: VistaTableros,
   },
   // espacios 

@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "private": true,
+  "homepage": "https://React-FrontendPM.github.io/react-github-pages/build",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

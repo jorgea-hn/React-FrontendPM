@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, 
+} from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
 import Sidebar from "../components/Sidebar";
@@ -10,6 +11,7 @@ function VistaTableros() {
     const [username, setUsername] = useState('');
     const navigate = useNavigate();
     const { espacioId } = useParams();
+
     const location = useLocation();
 
     useEffect(() => {
@@ -25,7 +27,7 @@ function VistaTableros() {
         const loadEspacioDetallado = async () => {
             try {
                 const accessToken = localStorage.getItem('accessToken');
-                const espacioDetallado = await espaciosService.espacioDetallado(accessToken, espacioId);
+                const espacioDetallado = await espaciosService.getEspacioDetallado(accessToken, espacioId);
                 
                 // Utiliza la información detallada del espacio como necesites
                 console.log('Información detallada del espacio:', espacioDetallado);
@@ -44,7 +46,7 @@ function VistaTableros() {
             <Sidebar username={username} />
             <div className="flex-1 overflow-auto">
                 <h1 className="text-xl font-bold text-primario text-center pt-10 mb-6">TUS TABLEROS</h1>
-                <EspaciosTableros />
+                <EspaciosTableros espacioId={espacioId} />
             </div>
         </div>
     );

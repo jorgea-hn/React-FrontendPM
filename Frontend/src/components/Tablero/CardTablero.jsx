@@ -1,7 +1,7 @@
 
 import { useNavigate } from 'react-router-dom';
 
-function CardTablero({ title = "¿Desea crear un nuevo tablero?", id }) {
+function CardTablero({ title = "¿Desea crear un nuevo tablero?", id, espacioId  }) {
     const navigate = useNavigate();
 
     const handleClick = () => {

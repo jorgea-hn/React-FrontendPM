@@ -3,9 +3,11 @@ import CardNewProject from "../components/CardNewProject"
 import iconoAgregar from "../assets/mas.svg"
 import iconoPM from "../assets/trello.svg"
 import flecha from "../assets/flechaAtras.png"
+import { useParams } from 'react-router-dom';
 
 function CreateNewProject() {
-
+    const { espacioId } = useParams();
+    console.log(espacioId)
     const navigate = useNavigate();
 
     const goBack = () => {
@@ -13,7 +15,7 @@ function CreateNewProject() {
     };
 
     const handleCardClick = () => {
-        navigate('/new');
+        navigate(`/new`);
       };
 
 
@@ -25,7 +27,7 @@ function CreateNewProject() {
                     <img src={flecha} alt="Flecha hacia atrás" className="w-8 h-8 mb-4" />
                 </div>
 
-                <h1 className="text-xl font-bold mb-4">Crear un proyecto nuevo</h1>
+                <h1 className="text-xl font-bold mb-4">Crear un tablero</h1>
                 <p className=" mb-8">¿Como quieres empezar?</p>
 
                 <div className="flex justify-around space-x-4">

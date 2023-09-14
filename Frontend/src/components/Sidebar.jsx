@@ -1,12 +1,14 @@
 import authService from '../services/authService';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Modal from './Modal';
 import React, { useState } from 'react';
 
 import icono from "../assets/Logo.png"
 import iconoUser from "../assets/user.svg"
-function Sidebar({username}) {
+import iconoRegresar from "../assets/regresar.svg"
+function Sidebar({ username }) {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -80,6 +82,24 @@ function Sidebar({username}) {
                                 <i class="fas fa-chevron-down text-xs"></i>
                             </div>
                         </li>
+
+                        {location.pathname.startsWith('/tableros/') && (
+                            <li class="opcion-con-desplegable">
+                                <div
+                                    class="flex items-center justify-between p-2 hover:bg-gray-700"
+                                    onClick={() => navigate(-1)}
+                                >
+                                    <div class="flex items-center">
+                                        <i class="fas fa-file-alt mr-2"></i>
+                                        <i class="fas fa-file-alt mr-2">
+                                            <img class="w-6" src={iconoRegresar} alt="" />
+                                        </i>
+                                        <span class="text-md font-regular">Regresar</span>
+                                    </div>
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </div>
+                            </li>
+                        )}
 
                         <li class="opcion-con-desplegable">
                             <div class="flex items-center justify-between p-2 hover:bg-gray-700">
